@@ -1,2 +1,2 @@
 # StoreWebsite
-an example to build a e-commerce website using Angular and nodeJS
+an example to build an e-commerce website using Angular and nodeJS
