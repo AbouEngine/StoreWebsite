@@ -25,7 +25,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { CartComponent } from './pages/cart/cart.component';
 import {CartService} from "./services/cart.service";
 import {StoreService} from "./services/store.service";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
