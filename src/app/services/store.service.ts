@@ -12,7 +12,15 @@ export class StoreService {
   /*
   Method to get all products basically a communication with the backend
    */
-  getAllProducts(limit= '12', sort= 'desc'): Observable<Array<Product>>{
-    return this.httpClient.get<Array<Product>>(`${STORE_BASE_URL}/products?sort=${sort}&limit=${limit}`)
+  /*
+  category is optional
+   */
+  getAllProducts(limit= '12', sort= 'desc', category?: string): Observable<Array<Product>>{
+    return this.httpClient
+        .get<Array<Product>>(
+            `${STORE_BASE_URL}/products${category ? '/category/' + category : ''}?sort=${sort}&limit=${limit}`)
+  }
+  getAllCategories(): Observable<Array<string>>{
+    return this.httpClient.get<Array<string>>(`${STORE_BASE_URL}/products/categories`)
   }
 }

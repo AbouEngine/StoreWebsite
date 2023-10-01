@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy{
 
     onShowCategory(newCategory: string) {
         this.category = newCategory;
+        this.getProducts();
     }
 
     onAddToCart(product: Product) {
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy{
     }
 
     private getProducts() {
-        this.productsSubscription = this.storeService.getAllProducts(this.count, this.sort)
+        this.productsSubscription = this.storeService.getAllProducts(this.count, this.sort, this.category)
             .subscribe((_products) => {
             this.products = _products;
         });
@@ -54,5 +55,15 @@ export class HomeComponent implements OnInit, OnDestroy{
         if (this.productsSubscription){
             this.productsSubscription.unsubscribe()
         }
+    }
+
+    onItemsCountChange(newCount: number) {
+        this.count = newCount.toString();
+        this.getProducts();
+    }
+
+    onSortChange(newSort: string) {
+        this.sort = newSort;
+        this.getProducts();
     }
 }
